@@ -24,6 +24,7 @@ export function validarCampo(campo) {
   }
 
   campo.classList.toggle('campo-invalido', !valido);
+  campo.setAttribute('aria-invalid', String(!valido));
 
   const spanErro = document.getElementById('erro-' + campo.name);
   if (spanErro) {
