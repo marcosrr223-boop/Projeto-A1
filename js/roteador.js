@@ -23,7 +23,7 @@ const paginas = {
     `,
   cadastro: `
         <section>
-            <div class="alert alert-sucesso">
+            <div class="alert alert-sucesso" role="status" aria-live="polite">
                 <strong>Sucesso!</strong> Seu cadastro foi enviado.
             </div>
             <form id="form-cadastro" novalidate>
@@ -31,19 +31,19 @@ const paginas = {
                     <legend>Informações pessoais</legend>
 
                     <label for="nome"> Nome Completo:</label>
-                    <input type="text" id="nome" name="nome" required>
+                    <input type="text" id="nome" name="nome" aria-describedby="erro-nome" required>
                     <span class="mensagem-erro" id="erro-nome"></span>
 
                     <label for="Data_N"> Data de Nascimento:</label>
-                    <input type="date" id="Data_N" name="Data_N" required>
+                    <input type="date" id="Data_N" name="Data_N" aria-describedby="erro-Data_N" required>
                     <span class="mensagem-erro" id="erro-Data_N"></span>
 
                     <label for="idade"> Idade:</label>
-                    <input type="number" id="idade" name="idade" min="18" max="100" required>
+                    <input type="number" id="idade" name="idade" aria-describedby="erro-idade" min="18" max="100" required>
                     <span class="mensagem-erro" id="erro-idade"></span>
 
                     <label for="CPF"> CPF:</label>
-                    <input type="text" id="CPF" name="CPF" pattern="[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}" 
+                    <input type="text" id="CPF" name="CPF" aria-describedby="erro-CPF" pattern="[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}" 
                     placeholder="000.000.000-00" title="Formato: 000.000.000-00"
                     required>
                     <span class="mensagem-erro" id="erro-CPF"></span>
@@ -54,18 +54,18 @@ const paginas = {
                     <legend>Informações de Contato</legend>
 
                     <label for="email"> Email de Titular:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" aria-describedby="erro-email" required>
                     <span class="mensagem-erro" id="erro-email"></span>
 
                     <label for="telefone"> Telefone de Contato:</label>
-                    <input type="tel" id="telefone" name="telefone" 
+                    <input type="tel" id="telefone" name="telefone" aria-describedby="erro-telefone" 
                     pattern="[0-9]{2}\\-[0-9]{5}\\-[0-9]{4}" 
                     placeholder="00-00000-0000" title="Formato: 00-00000-0000"
                     required>
                     <span class="mensagem-erro" id="erro-telefone"></span>
                     
                     <label for="CEP"> CEP:</label>
-                    <input type="text" id="CEP" name="CEP" 
+                    <input type="text" id="CEP" name="CEP" aria-describedby="erro-CEP" 
                     pattern="[0-9]{5}-[0-9]{3}" 
                     placeholder="00000-000" title="Formato: 00000-000"
                     required>
@@ -74,7 +74,7 @@ const paginas = {
                 </fieldset>
                 <button type="submit">Enviar</button>
             </form>
-            <div class="toast">Cadastro enviado com sucesso.</div>
+            <div class="toast" role="status" aria-live="polite">Cadastro enviado com sucesso.</div>
         </section>
 
     `,
@@ -104,9 +104,9 @@ const paginas = {
 
             </article>
         </section>
-        <div class="modal-overlay" id="modal-comprovante">
+        <div class="modal-overlay" id="modal-comprovante" role="dialog" aria-modal="true" aria-labelledby="modal-comprovante-titulo">
           <div class="modal-caixa">
-            <h3>Comprovante de doação</h3>
+            <h3 id="modal-comprovante-titulo">Comprovante de doação</h3>
             <p>Obrigado pela sua contribuição! Este é um exemplo de comprovante gerado após uma doação.</p>
             <a href="#" data-fechar-modal>Fechar</a>
           </div>

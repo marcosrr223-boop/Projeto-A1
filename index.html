@@ -10,11 +10,26 @@
 <body>
     <header>
         <h1>Instituto Raízes do Amanhã</h1>
-        <img src="img/imagemA1.jpg" alt="imagem mostrando os participantes da ONG realizando as suas atividades e comemorando uma conquista" width="300" height="200" title="Imagem ONG">
+        <picture>
+          <source
+            type="image/webp"
+            srcset="img/imagemA1-300w.webp 300w, img/imagemA1-600w.webp 600w"
+            sizes="(min-width: 768px) 300px, 100vw">
+          <source
+            type="image/jpeg"
+            srcset="img/imagemA1-300w.jpg 300w, img/imagemA1-600w.jpg 600w"
+            sizes="(min-width: 768px) 300px, 100vw">
+          <img
+            src="img/imagemA1-300w.jpg"
+            alt="imagem mostrando os participantes da ONG realizando as suas atividades e comemorando uma conquista"
+            width="300" height="200"
+            title="Imagem ONG"
+            decoding="async">
+        </picture>
     </header>
-    <nav>
+    <nav aria-label="Navegação principal">
         <input type="checkbox" id="menu-toggle" class="menu-toggle-input">
-        <label for="menu-toggle" class="menu-toggle-label">&#9776;</label>
+        <label for="menu-toggle" class="menu-toggle-label" aria-label="Abrir menu de navegação">&#9776;</label>
 
         <ul class="nav-links">
             <li><a href="#/inicio">Home</a></li>
