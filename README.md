@@ -44,7 +44,7 @@ git clone https://github.com/marcosrr223-boop/Projeto-A1.git
 
 ## Deploy
 
-Por se tratar de um projeto estático, sem backend ou processo de build, a forma mais simples de publicá-lo é através do **GitHub Pages**, apontando para a branch `main` do repositório.
+O deploy é feito através da **Vercel**, conectada diretamente ao repositório no GitHub. A plataforma detecta automaticamente que o projeto usa Vite (pelo `package.json`), executa `npm run build` a cada push e publica o conteúdo da pasta `dist/`. A branch `main` está configurada como branch de produção, seguindo o fluxo do GitFlow adotado no projeto: cada Pull Request aberto (a partir de uma `feature/` para `develop`, ou de `develop` para `main`) recebe automaticamente uma URL de preview própria, permitindo testar as mudanças antes de irem para produção.
 
 ## Contribuição
 
