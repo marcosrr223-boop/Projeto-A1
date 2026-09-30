@@ -1,0 +1,327 @@
+:root {
+  /* Cores Primárias */
+  --color-primary: #2E7D32;        /* Verde principal — natureza, esperança, crescimento */
+  --color-primary-dark: #1B5E20;   /* Verde escuro — hover, ênfase */
+  --color-primary-light: #81C784;  /* Verde claro — backgrounds suaves, badges */
+
+  /* Cores Secundárias */
+  --color-secondary: #F9A825;      /* Amarelo terroso — acolhimento, calor humano */
+  --color-secondary-dark: #F57F17; /* Amarelo escuro — CTAs de doação */
+
+  /* Tons Neutros */
+  --color-neutral-900: #212121;    /* Texto principal */
+  --color-neutral-600: #616161;    /* Texto secundário */
+  --color-neutral-300: #E0E0E0;    /* Bordas, divisores */
+  --color-neutral-100: #FAFAFA;    /* Background de seções */
+  --color-white: #FFFFFF;
+
+  /* Feedback (apoio) */
+  --color-alert: #C62828;          /* Erros/urgência (ex: campanhas emergenciais) */
+}
+:root {
+  --font-family-base: 'Nunito Sans', sans-serif;
+
+  --font-size-xs: 14px;   /* legendas, metadados */
+  --font-size-sm: 16px;       /* corpo de texto padrão */
+  --font-size-md: 20px;    /* subtítulos de card/seção */
+  --font-size-lg: 32px;       /* títulos de seção (H2) */
+  --font-size-xl: 44px;    /* título principal da página (H1) */
+
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+:root {
+  --space-1: 4px; 
+  --space-2: 8px;  
+  --space-3: 16px;    
+  --space-4: 24px;  
+  --space-5: 32px;     
+  --space-6: 48px;    
+  --space-7: 64px;     
+}
+body {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas:
+    "header header header header header header header header header header header header"
+    "nav    nav    nav    nav    nav    nav    nav    nav    nav    nav    nav    nav"
+    "main   main   main   main   main   main   main   main   main   main   main   main"
+    "footer footer footer footer footer footer footer footer footer footer footer footer";
+  gap: var(--space-3);
+}
+
+header { grid-area: header; }
+nav    { grid-area: nav; }
+main   { grid-area: main; }
+footer { grid-area: footer; }
+
+/* Grid interno dos cards (dentro do main) */
+main section {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-4);
+}
+
+main section article {
+  grid-column: span 12; /* mobile: 1 card por linha */
+}
+
+/* ===================================================== */
+/* FLEXBOX — alinhamento interno (cabeçalho, menu, cards, formulário) */
+/* ===================================================== */
+
+/* Cabeçalho: título e imagem centralizados, empilhados no mobile */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Menu: itens em linha, com quebra automática se não couber */
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  list-style: none;
+  padding: 0;
+}
+
+/* Conteúdo interno de cada card de projeto */
+main section article {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Formulário de cadastro */
+form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+nav li {
+  position: relative;
+}
+
+nav .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+nav li:hover > .submenu,
+nav li:focus-within > .submenu {
+  display: block;
+}
+.menu-toggle-input {
+  display: none;
+}
+
+.menu-toggle-label {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+nav .nav-links {
+  transition: all 0.3s ease;
+}
+button {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 4px;
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+}
+button:hover {
+  background-color: var(--color-primary-dark);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+button:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+button:active {
+  background-color: var(--color-primary-dark);
+  transform: scale(0.97);
+  box-shadow: none;
+}
+button:disabled {
+  background-color: var(--color-neutral-300);
+  color: var(--color-neutral-600);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+input:not(:placeholder-shown):invalid {
+  border: 2px solid var(--color-alert);
+  background-color: #FDECEA;
+}
+
+input:not(:placeholder-shown):valid {
+  border: 2px solid var(--color-primary);
+  background-color: #EEF7EE;
+}
+input:focus:invalid {
+  outline: 2px solid var(--color-alert);
+}
+.campo-invalido {
+  border: 2px solid var(--color-alert);
+  background-color: #FDECEA;
+}
+.mensagem-erro {
+  color: var(--color-alert);
+  font-size: 0.85rem;
+  display: block;
+  margin-top: -4px;
+  margin-bottom: 8px;
+}
+input {
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+/* ===================================================== */
+/* BREAKPOINTS RESPONSIVOS (mobile-first)                 */
+/* ===================================================== */
+
+/* Cenário 1 — celular grande / phablet */
+@media (min-width: 480px) {
+  main section article {
+    grid-column: span 6; /* 2 cards por linha */
+  }
+}
+
+/* Cenário 2 — tablet retrato */
+@media (max-width: 767px) {
+  .menu-toggle-label {
+    display: block;
+  }
+
+  nav .nav-links {
+    display: none;
+    flex-direction: column;
+  }
+    .menu-toggle-input:checked ~ .nav-links {
+    display: flex;
+  }
+}
+
+/* Cenário 3 — tablet paisagem / notebook pequeno */
+@media (min-width: 1024px) {
+  main section article {
+    grid-column: span 4; /* 3 cards por linha */
+  }
+}
+
+/* Cenário 4 — desktop */
+@media (min-width: 1440px) {
+  main section article {
+    grid-column: span 3; /* 4 cards por linha */
+  }
+  main section {
+    gap: var(--space-5);
+  }
+}
+
+/* Cenário 5 — desktop panorâmico / telas muito largas */
+@media (min-width: 1920px) {
+  body {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+}
+
+/* ===================================================== */
+/* COMPONENTES DE FEEDBACK -- badges, alertas, toast, modal */
+/* ===================================================== */
+
+/* Badges (etiquetas de categorizacao) */
+.badge {
+  display: inline-block;
+  align-self: flex-start;
+  justify-self: start;
+  padding: var(--space-1) var(--space-2);
+  border-radius: 999px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+}
+
+.badge-educacao { background-color: var(--color-primary); }
+.badge-ambiental { background-color: var(--color-secondary-dark); }
+.badge-doacao { background-color: var(--color-primary-dark); }
+
+/* Alertas */
+.alert {
+  display: none;
+  padding: var(--space-3);
+  border-left: 4px solid;
+  border-radius: 4px;
+  margin-bottom: var(--space-3);
+}
+
+.alert-sucesso {
+  background-color: #EEF7EE;
+  border-left-color: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+.alert-erro {
+  background-color: #FDECEA;
+  border-left-color: var(--color-alert);
+  color: var(--color-alert);
+}
+
+/* Toast (notificacao nao obstrutiva) */
+.toast {
+  display: none;
+  position: fixed;
+  bottom: var(--space-4);
+  right: var(--space-4);
+  background-color: var(--color-neutral-900);
+  color: var(--color-white);
+  padding: var(--space-3) var(--space-4);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal (aberto/fechado via JavaScript, classe .aberto) */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.aberto {
+  display: flex;
+}
+
+.modal-caixa {
+  background-color: var(--color-white);
+  padding: var(--space-5);
+  border-radius: 8px;
+  max-width: 400px;
+}
+
+/* Feedback do formulario de cadastro, acionado via JavaScript (classe .mostrar) */
+.alert.mostrar {
+  display: block;
+}
+
+.toast.mostrar {
+  display: block;
+}
